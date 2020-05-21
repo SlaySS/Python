@@ -1,0 +1,1 @@
+[{"Nick Name": "Ivan", "Score": 345, "Life": 98, "Age": 49}, {"Nick Name": "Kuzma", "Score": 765, "Life": 70, "Age": 37}]

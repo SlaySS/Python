@@ -1,22 +1,15 @@
-def wrap_log(func):
-    def wrap():
-        print('Start')
-        func()
-        print('End')
 
+def log_function(func):
+    def wrap():
+        print(f'Start {func}')
+        func()
+        print(f'End {func}')
     return wrap
 
 
-@wrap_log
-def printhello():
+@log_function
+def hello():
     print('Hello')
 
 
-a = [1, 2, 3, 4, 5]
-b = [6, 0, 8, 9]
-a += b
-c = sorted(a)
-print(a)
-print(c)
-a.sort()
-print(a)
+hello()
