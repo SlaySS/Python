@@ -1,34 +1,51 @@
-class Pagination():
-    current_page = 0
+class Pagination:
 
-    def __init__(self, item=[], pagesize=5):
-        self.item = item
+    def __init__(self, items=[], pagesize=10):
+        self.items = items
         self.pagesize = pagesize
+        self.totalpages = 1 if not self.items else len(self.items) // self.pagesize + 1
+        self.current_page = 1
+
+    def get_items(self):
+        return self.items
+
+    def get_page_size(self):
+        return self.pagesize
+
+    def get_current_page(self):
+        return self.current_page
 
     def get_visible_items(self):
-        yield self.item[self.current_page:self.current_page + self.pagesize]
+        start = (self.current_page - 1) * self.pagesize
+        return (self.items[start:start + self.pagesize])
 
     def next_page(self):
-        self.current_page += self.pagesize
+        if self.current_page == self.totalpages:
+            return self
+        self.current_page += 1
+        return self
 
     def prev_page(self):
-        self.current_page -= self.pagesize
+        if self.current_page == 1:
+            return self
+        self.current_page -= 1
+        return self
 
     def first_page(self):
-        self.current_page = 0
+        self.current_page = 1
+        return self
 
     def last_page(self):
-        self.current_page = len(self.item) - len(self.item) % self.pagesize
+        self.current_page = self.totalpages
+        return self
 
     def go_to_page(self, page):
-        self.page=page
         if page < 1:
-            self.first_page()
-        if page > len(self.item) % self.pagesize:
-            self.last_page()
-        else:
-            self.current_page = self.pagesize*page-1
-
+            page = 1
+        elif page > self.totalpages:
+            page = self.totalpages
+        self.current_page = page
+        return self
 
 
 lst = list('VQ4v9qvqv345343242')
@@ -36,7 +53,7 @@ lst = list('VQ4v9qvqv345343242')
 p = Pagination(lst)
 print(list(p.get_visible_items()))
 print(p.current_page)
-p.go_to_page(-2)
+p.go_to_page(2)
 print(p.current_page)
 print(list(p.get_visible_items()))
 # p.next_page()
