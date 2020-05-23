@@ -14,6 +14,7 @@ class IceCream:
         return max([icecream.sprinkles + flavor_values[icecream.flavor] for icecream in lst])
 
 
-ice1 = IceCream("ChokolateChip" , 10)
-ice2= IceCream("Vanilla" , 5)
+ice1 = IceCream("ChokolateChip", 10)
+ice2 = IceCream("Vanilla", 5)
 print(IceCream.sweetest_icecream([ice1, ice2]))
+

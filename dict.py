@@ -46,3 +46,5 @@ for k, v in legs.items():
 person = ('Nika', 'Papa', 'Mama')
 print(len(person))
 print(person[2])
+
+
