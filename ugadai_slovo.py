@@ -19,8 +19,7 @@ while True:
     letter = input("Веедите букву :")
     if letter in word:
         print("Такая буква есть !")
-        secret_word.insert(word.index(letter), letter)
-        secret_word.pop()
+        secret_word[word.index(letter)] = letter
         print(secret_word)
     else:
         print("Такой буквы нет")
